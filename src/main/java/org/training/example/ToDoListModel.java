@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by mgom on 10/02/17.
  */
 public class ToDoListModel {
-    private Map<UUID, ToDoModel> toDoList = new ConcurrentHashMap<>();
+    private Map<String, ToDoModel> toDoList = new ConcurrentHashMap<>();
     private static ToDoListModel instance = new ToDoListModel();
 
     private ToDoListModel() {}
@@ -20,7 +20,7 @@ public class ToDoListModel {
         return new ArrayList<>(toDoList.values());
     }
 
-    public ToDoModel removeElement(UUID id) {
+    public ToDoModel removeElement(String id) {
         return toDoList.remove(id);
     }
 
@@ -28,7 +28,7 @@ public class ToDoListModel {
         return instance;
     }
 
-    public ToDoModel updateElement(UUID uuid, ToDoModel toDo) {
+    public ToDoModel updateElement(String uuid, ToDoModel toDo) {
         toDo.id = uuid;
         return toDoList.put(uuid, toDo);
     }

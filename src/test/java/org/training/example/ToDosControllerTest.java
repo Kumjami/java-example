@@ -42,7 +42,7 @@ public class ToDosControllerTest {
      */
     @Test
     public void testGetIt() {
-        String responseMsg = target.path("todos").request().get(String.class);
-        assertEquals("TODOS LIST", responseMsg);
+        ToDoModel []responseMsg = target.path("todos").request().get(ToDoModel[].class);
+        assertEquals("Returns empty array",0, responseMsg.length);
     }
 }

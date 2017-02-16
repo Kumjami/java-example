@@ -20,6 +20,9 @@ public class ToDoController {
     @Produces(MediaType.APPLICATION_JSON)
     public ToDoModel createToDo (ToDoModel toDo) {
         ToDoListModel toDosList = ToDoListModel.getInstance();
+        if(toDo.id == null)
+            toDo.id = UUID.randomUUID().toString();
+
         toDosList.addToDo(toDo);
         return toDo;
     }
@@ -28,14 +31,14 @@ public class ToDoController {
     @Produces(MediaType.APPLICATION_JSON)
     public ToDoModel removeToDo (@PathParam("toDoId") final String toDoId) {
         ToDoListModel toDosList = ToDoListModel.getInstance();
-        return toDosList.removeElement(UUID.fromString(toDoId));
+        return toDosList.removeElement(toDoId);
     }
 
     @PUT @Path("/{toDoId}")
     @Produces(MediaType.APPLICATION_JSON)
     public ToDoModel updateToDo (@PathParam("toDoId") final String toDoId, ToDoModel toDo) {
         ToDoListModel toDosList = ToDoListModel.getInstance();
-        toDosList.updateElement(UUID.fromString(toDoId), toDo);
+        toDosList.updateElement(toDoId, toDo);
         return toDo;
     }
 

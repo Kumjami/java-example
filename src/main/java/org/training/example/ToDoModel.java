@@ -1,14 +1,12 @@
 package org.training.example;
 
-import java.util.UUID;
-
 /**
  * Created by mgom on 10/02/17.
  */
 public class ToDoModel {
     public String description;
     public boolean done = false;
-    public UUID id = UUID.randomUUID();
+    public String id;
 
     @Override
     public String toString() {
